@@ -1,3 +1,11 @@
+Prochaine séance:
+
+
+
+Créer les classes, les fonctions, etc... ensemble via git pour se coordonner
+
+
+
 class Main{
 	
 
