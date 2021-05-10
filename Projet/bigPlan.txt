@@ -1,0 +1,56 @@
+class Main{
+	
+
+Bonus: 	Gérer une intéraction avec la console (petit menu "que voulez vous faire", avec les options disponible et tt)
+		Proposer de sortir un .png avec la visualisation de la carte de manière un peu pas dégueu
+	
+}
+
+
+class Ile{
+	Variables: Un tableau 2D dans laquel sera stocké la carte
+		   nom de l'ile
+
+
+
+	constructeur (on passe juste le chemin du fichier): chemin vers la carte (en .clair ou .crypté). Le programme décode automatiquement si besoin et sort un tableau. L'initialisation mène forcément à la création d'un tableau représentant la carte.
+
+	Fonction Décodage:
+		On lui envoi une chaine de caractère crypté, et il renvoi la chaine en clair
+		
+		Fonction récursive:
+		On a un tableau avec le chaine crypté
+		un tableau vide de même dimension
+	
+		En entrée on met un bout de l'ile, la fonction va regarder en haut, en bas, a droite, a gauche. Si y'as pas de frontière entre les 2, elle va mettre dans le tableau vide, a ces coordonnées, le nom de la parcelle, puis la fonction recursive va recommencer.
+
+
+
+
+	
+	
+
+	Fonction affichage global:
+		On parcours simplement le tableau et on affiche
+
+	Fonction affichage liste parcelle:
+		On parcours le tableau en entier juste pour trouver tout les bout de la parcelle A, puis on le reparcours en entier juste pour la parcelle B, etc...
+		(Pas optimal, on va essayer de trouver mieux)	
+	
+Fonction affichage taille parcelle:
+		On parcours le tableau, et dés qu'on tombe sur un bout de parcelle demandé, on incrémente un compteur, ce qui nous donnera la carte.
+	
+	Fonction affichage plus grand parcelle:
+		On fait une liste, on affiche toute les parcelles et on stocke le résultat dans cette liste, puis on parcours la liste et prend que ceux supérieur a X
+
+	Fonction affichage taille moyenne:
+		On fait un peu pareil qu'au dessus, mais on fera la moyenne au lieu de faire un tri sur la taille
+	
+
+
+}
+
+class static Codage:
+	
+	Fonction Codage:
+		On prend une carte en clair ( ile.afficheCarte() )et on suit les instruction du PDF pour le cryptage (pas compliqué du coup)
