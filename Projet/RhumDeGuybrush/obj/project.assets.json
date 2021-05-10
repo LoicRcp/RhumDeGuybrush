@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\DUT\\Informatique\\1E_Année\\Semestre2\\M1104 - Conception Orientée Objet\\Rhum De Guybrush\\Projet\\RhumDeGuybrush\\RhumDeGuybrush.csproj",
+      "projectUniqueName": "I:\\DUT\\Informatique\\1E_Année\\Semestre2\\M1104 - Conception Orientée Objet\\Rhum De Guybrush\\RhumDeGuybrush\\Projet\\RhumDeGuybrush\\RhumDeGuybrush.csproj",
       "projectName": "RhumDeGuybrush",
-      "projectPath": "I:\\DUT\\Informatique\\1E_Année\\Semestre2\\M1104 - Conception Orientée Objet\\Rhum De Guybrush\\Projet\\RhumDeGuybrush\\RhumDeGuybrush.csproj",
+      "projectPath": "I:\\DUT\\Informatique\\1E_Année\\Semestre2\\M1104 - Conception Orientée Objet\\Rhum De Guybrush\\RhumDeGuybrush\\Projet\\RhumDeGuybrush\\RhumDeGuybrush.csproj",
       "packagesPath": "C:\\Users\\loicr\\.nuget\\packages\\",
-      "outputPath": "I:\\DUT\\Informatique\\1E_Année\\Semestre2\\M1104 - Conception Orientée Objet\\Rhum De Guybrush\\Projet\\RhumDeGuybrush\\obj\\",
+      "outputPath": "I:\\DUT\\Informatique\\1E_Année\\Semestre2\\M1104 - Conception Orientée Objet\\Rhum De Guybrush\\RhumDeGuybrush\\Projet\\RhumDeGuybrush\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\loicr\\AppData\\Roaming\\NuGet\\NuGet.Config",
