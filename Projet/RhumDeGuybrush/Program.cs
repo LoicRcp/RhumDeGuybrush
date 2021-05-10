@@ -6,7 +6,7 @@ namespace RhumDeGuybrush
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Coucou je suis pierre");
+            Console.WriteLine("Non c'est loic");
         }
     }
 }
