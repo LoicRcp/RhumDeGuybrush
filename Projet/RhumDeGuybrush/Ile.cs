@@ -6,12 +6,11 @@ namespace RhumDeGuybrush
 {
     class Ile
     {
-        double[,] Carte =
-        {
-            {0,0},
-            {0,0}
-        };
-        string nomIle;
+        char[,] carte = new char[3, 3]
+            { {'a','a','b' },
+              {'a','a','b' },
+              {'c','c','c' } };
+
 
         string Decodage(string a)
         {
