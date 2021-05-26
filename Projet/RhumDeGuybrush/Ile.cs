@@ -37,6 +37,44 @@ namespace RhumDeGuybrush
         /// <returns></returns>
         string Decodage(string a)
         {
+
+
+            string[,] tabCode = new string[10, 10];
+
+
+            string code = "67:69:69:69:69:69:69:69:69:73|74:3:9:7:5:13:3:1:9:74|74:2:8:7:5:13:6:4:12:74|74:6:12:7:9:7:13:3:9:74|74:3:9:11:6:13:7:4:8:74|74:6:12:6:13:11:3:13:14:74|74:7:13:7:13:10:10:3:9:74|74:3:1:9:7:12:14:2:8:74|74:6:4:4:5:5:13:6:12:74|70:69:69:69:69:69:69:69:69:76|";
+
+            string[] codeSplitted = code.Split('|');
+
+            int i = 0;
+            int j = 0;
+
+            foreach (string line in codeSplitted)
+            {
+                if (line != "")
+                {
+                    Console.WriteLine();
+                    foreach (string row in line.Split(':'))
+                    {
+                        tabCode[i, j] = row;
+                        Console.Write(tabCode[i, j] + ":");
+                        j++;
+                    }
+                    j = 0;
+                    i++;
+                }
+            }
+
+
+
+            // convertion string --> tableau 2D encodé - Fait
+            // A faire: Fonction récursive, je parcours le tableau, je check pour les frontières, etc...
+
+
+
+
+
+
             return a;
         }
 
