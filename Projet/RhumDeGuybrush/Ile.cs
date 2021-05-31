@@ -79,22 +79,32 @@ namespace RhumDeGuybrush
         }
 
         /// <summary>
-        /// Fonction affichageGlobal qui parcours le tableau et qui affiche
+        /// Fonction affichageGlobal qui parcours le tableau et qui l'affiche. Avec une boucle 
         /// </summary>
-        /// <param name="b"></param>
+        /// <param =></param>
         /// <returns></returns>
-        int affichageGlobal(int b)
+        void affichageGlobal()
         {
             int i = 0;
             int j = 0;
-            for(i = 0; i <= 2; i++)
+            for (i = 0; i < 3; i++)
             {
-                for(j = 0; j <=2; j++)
+                Console.WriteLine();
+                for (j = 0; j < 3; j++)
                 {
-                    Console.WriteLine(carte[i,j]);
+
+                    if (carte[i, j] == 'M')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    }
+                    if (carte[i, j] == 'F')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    Console.Write(carte[i, j]);
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-            return b;
         }
 
         /// <summary>
@@ -102,9 +112,8 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        int affichageListeParcelle(int c)
+        void affichageListeParcelle()
         {
-            return c;
         }
 
         /// <summary>
@@ -112,9 +121,8 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
-        int affichageTailleParcelle(int d)
+        void affichageTailleParcelle()
         {
-            return d;
         }
 
         /// <summary>
@@ -122,9 +130,8 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        int affichagePlusGrandeParcelle(int e)
+        void affichagePlusGrandeParcelle()
         {
-            return e;
         }
 
         /// <summary>
@@ -132,10 +139,10 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="f"></param>
         /// <returns></returns>
-        int affichageTailleMoyenne(int f)
+        void affichageTailleMoyenne()
         {
-            return f;
         }
+
         #endregion 
     }
 }
