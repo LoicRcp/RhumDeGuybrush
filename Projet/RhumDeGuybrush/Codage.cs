@@ -4,17 +4,19 @@ using System.Text;
 
 namespace RhumDeGuybrush
 {
-
-  
+    /// <summary>
+    /// La classe Codage permet d'encoder une carte décrypté
+    /// </summary>
     static class Codage
     {
         /// <summary>
         /// Fonction FrontiereGauche regarde le chiffre à gauche et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière gauche</returns>
         /// </summary>
-        /// <param name="carte">Tableau qui représente la carte></param>
-        /// <param name="i">Curseur lignes></param>
-        ///  <param name="j">Curseur colonnes></param>
+        /// <param name="carte">Tableau qui représente la carte</param>
+        /// <param name="i">Curseur lignes</param>
+        /// <param name="j">Curseur colonnes</param>
+        
         public static Boolean FrontiereGauche(char[,] carte, int i, int j)
         {
             try  // On essaye d'accéder à l'élément à gauche
@@ -39,9 +41,9 @@ namespace RhumDeGuybrush
         /// Fonction FrontiereDroite regarde le chiffre à droite et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière droite</returns>
         /// </summary>
-        /// <param name="carte">Tableau qui représente la carte></param>
-        /// <param name="i">Curseur lignes></param>
-        ///  <param name="j">Curseur colonnes></param>
+        /// <param name="carte">Tableau qui représente la carte</param>
+        /// <param name="i">Curseur lignes</param>
+        /// <param name="j">Curseur colonnes</param>
         public static Boolean FrontiereDroite(char[,] carte, int i, int j)
         {
             try // On essaye d'accéder à l'élément à droite
@@ -66,9 +68,9 @@ namespace RhumDeGuybrush
         /// Fonction FrontiereHaut regarde le chiffre à droite et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière en haut</returns>
         /// </summary>
-        /// <param name="carte">Tableau qui représente la carte></param>
-        /// <param name="i">Curseur lignes></param>
-        ///  <param name="j">Curseur colonnes></param>
+        /// <param name="carte">Tableau qui représente la carte</param>
+        /// <param name="i">Curseur lignes</param>
+        ///  <param name="j">Curseur colonnes</param>
         public static Boolean FrontiereHaut(char[,] carte, int i, int j)
         {
             try // On essaye d'accéder à l'élément au dessus
@@ -94,9 +96,9 @@ namespace RhumDeGuybrush
         /// Fonction FrontiereBas regarde le chiffre à droite et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière en bas</returns>
         /// </summary>
-        /// <param name="carte">Tableau qui représente la carte></param>
-        /// <param name="i">Curseur lignes></param>
-        ///  <param name="j">Curseur colonnes></param>
+        /// <param name="carte">Tableau qui représente la carte</param>
+        /// <param name="i">Curseur lignes</param>
+        /// <param name="j">Curseur colonnes</param>
 
         public static Boolean FrontiereBas(char[,] carte, int i, int j)
         {
@@ -120,7 +122,10 @@ namespace RhumDeGuybrush
         /// <summary>
         /// Fonction Codage regarde les frontières et ajoute le numéro adapté en conséquences ainsi que le type de terre (Mer/Foret) pour chaque élément et construit a
         /// </summary>
-       
+        /// <returns> carte chiffré </returns>
+        /// <param name="path">Chemin de la carte claire</param>
+        
+
         public static string codage(string path) // Méthode qui à partir d'une carte claire , retourne une carte chiffré
         {
             char[,] carte = new char[10, 10];  // Declare une carte 2 Dimensions de taille 10 ligne 10 colonnes
