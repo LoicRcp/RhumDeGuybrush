@@ -24,7 +24,11 @@ namespace RhumDeGuybrush
 
         #region Constructeur
 
-        public Ile(string path) // Constructeur, prend en paramètre le chemin vers la carte cryptée.
+        /// <summary>
+        ///  ?????
+        /// </summary>
+        /// <param name="path"> Le chemin vers la carte cryptée </param>
+        public Ile(string path) 
         {
 
             if (path.Contains(".chiffre")){ // Si l'extension est bien .chiffre:
@@ -59,20 +63,23 @@ namespace RhumDeGuybrush
 
         #region décodage
         /// <summary>
-        /// Fonction Decodage a qui on envoie une chaine de caractère crypté, et il renvoi la chaine en clair
-        /// Idée : On a un tableau avec le chaine crypté, un tableau vide de même dimension
-        /// En entrée on met un bout de l'ile, la fonction va regarder en haut, en bas, a droite, a gauche. Si y'as pas de frontière entre les 2, elle va mettre dans le tableau vide, a ces coordonnées, le nom de la parcelle, puis la fonction recursive va recommencer.
+        /// ?????
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="code"> ????? </param>
         /// <returns></returns>
         Land[,] decodage(string code)
         {
 
             List<Land> parcelle = new List<Land>(); // Déclaration de la variable "parcelle" qui stockera la parcelle sur laquelle le script "travaille"
-            List<Land> checkNeighboor(List<Land> toCheck, Land[,] tabCode) // Fonction (récursive) qui va regarder si y'as des voisin de la case (même parcelle). Si oui, va regardez leur voisins aussi. (voir schéma dans "autre" sur github)
+            /// <summary>
+            /// Fonction (récursive) qui va regarder si y'as des voisin de la case (même parcelle). Si oui, va regardez leur voisins aussi. (voir schéma dans "autre" sur github)
+            /// </summary>
+            /// <param name="toCheck"> ????? </param>
+            /// <param name="toCode"> ????? </param>
+            /// <returns></returns>
+            List<Land> checkNeighboor(List<Land> toCheck, Land[,] tabCode) 
             {
 
-                // List<Land> oldList = new List<Land>();
                 List<Land> newList = new List<Land>();
    
 
@@ -297,14 +304,11 @@ namespace RhumDeGuybrush
         #endregion
 
         #region Affichage Global
+  
+
         /// <summary>
-        /// Fonction affichageGlobal qui parcours le tableau et qui l'affiche. Avec une boucle 
+        ///  ?????
         /// </summary>
-        /// <param =></param>
-        /// <returns></returns>
-
-
-
         public void affichageAscii()
         {
             for (int i = 0; i < 10; i++) // Parcours les lignes tableau
@@ -327,6 +331,11 @@ namespace RhumDeGuybrush
                 }
             }
         }
+
+        /// <summary>
+        ///  ?????
+        /// </summary>
+        /// <param name="mapSize"> ????? </param>
         public void affichageCarte(int mapSize) {
             Console.WriteLine("\n");
             for (int i = 0; i < 10; i++) // Parcours les lignes tableau
@@ -355,6 +364,11 @@ namespace RhumDeGuybrush
         #endregion
 
         #region parcours Parcelle
+
+        /// <summary>
+        /// ?????
+        /// </summary>
+        /// <returns></returns>
         List<List<Land>> ParcoursParcelle()
         {
             List<List<Land>> Liste_parcelle = new List<List<Land>>(); // Une liste qui contient des listes de cases
@@ -393,10 +407,8 @@ namespace RhumDeGuybrush
 
             #region AffichageListeParcelle
             /// <summary>
-            /// Fonction affichageListeParcelle ...
+            /// ?????
             /// </summary>
-            /// <param name="c"></param>
-            /// <returns></returns>
         public void affichageListeParcelle()
             {
 
@@ -429,11 +441,12 @@ namespace RhumDeGuybrush
         #endregion
 
         #region AffichageTailleParcelle
-        /// <summary>
-        /// Fonction affichageTailleParcelle qui parcours le tableau, et dés qu'il tombe sur un bout de parcelle demandé, on incrémente un compteur, ce qui nous donne la carte.
-        /// </summary>
-        /// <param name="d"></param>
-        /// <returns></returns>
+     /// <summary>
+     /// ?????
+     /// </summary>
+     /// <param name="toFind"> ????? </param>
+     /// <param name="mute"> ????? </param>
+     /// <returns></returns>
         public int affichageTailleParcelle(char toFind, Boolean mute) // mute permet de ne pas afficher de texte au besoin
         {
             List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
@@ -458,10 +471,9 @@ namespace RhumDeGuybrush
 
         #region affichagePlusGrandeParcelle
         /// <summary>
-        /// Fonction affichagePlusGrandeParcelle qui fait une liste, affiche toute les parcelles et qui stocke le résultat dans cette liste, puis parcours la liste et prend que ceux supérieur a X
+        /// ?????
         /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
+        /// <param name="minSize"> ????? </param>
         public void affichageParcelleSuperieurA(int minSize)
         {
             Boolean found = false;
@@ -489,12 +501,28 @@ namespace RhumDeGuybrush
 
         #region affichageTailleMoyenne
         /// <summary>
-        /// Fonction affichageTailleMoyenne qui fait un peu pareil qu'au dessus, mais qui fait la moyenne au lieu de faire un tri sur la taille
+        /// ?????
         /// </summary>
-        /// <param name="f"></param>
-        /// <returns></returns>
-        void affichageTailleMoyenne()
+        public void affichageTailleMoyenne()
         {
+
+
+            List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
+
+            float moyenne = 0;
+
+            foreach (List<Land> parcelle in listeParcelles)
+            {
+                moyenne += affichageTailleParcelle(parcelle[0].lettre, true);
+
+
+
+
+            }
+
+            moyenne = moyenne / listeParcelles.Count();
+
+            Console.WriteLine("La taille moyenne est: {0}", Math.Round(moyenne, 2));
         }
         #endregion
 
