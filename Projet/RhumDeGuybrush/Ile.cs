@@ -305,22 +305,41 @@ namespace RhumDeGuybrush
 
 
 
-        public void affichageGlobal()
+        public void affichageGlobal(Boolean affichageAscii)
         {
             for (int i = 0; i < 10; i++) // Parcours les lignes tableau
             {
-                Console.WriteLine(); 
+                Console.WriteLine();
 
-                for (int j = 0; j < 10; j++) // Parcours les colonnes tableau
+
+                if (affichageAscii)
                 {
-                    Console.ForegroundColor = carte[i, j].color; 
-                    Console.Write(carte[i, j].lettre); // Affiche chaque lettre de la carte 
-                    Console.ForegroundColor = ConsoleColor.White; // Mets en blanc tous les caractères dans la console qui ne font pas parti de la carte
+                    for (int j = 0; j < 10; j++) // Parcours les colonnes tableau
+                    {
+                        Console.ForegroundColor = carte[i, j].color;
+                        Console.Write(carte[i, j].lettre); // Affiche chaque lettre de la carte 
+                        Console.ForegroundColor = ConsoleColor.White; // Mets en blanc tous les caractères dans la console qui ne font pas parti de la carte
+
+
+                        // 2 affichages différent, les 2 sont bien.
+                        Console.Write(""); // Pas de séparations
+                                           //Console.Write(":"); // Permet de séparer chaque caractère par :
+                    }
+                } else
+                {
                     
-                    
-                    // 2 affichages différent, les 2 sont bien.
-                    Console.Write(""); // Pas de séparations
-                    //Console.Write(":"); // Permet de séparer chaque caractère par :
+                    for (int j = 0; j < 10; j++) // Parcours les colonnes tableau
+                    {
+                        Console.BackgroundColor = carte[i, j].color;
+                        Console.Write(" "); // Affiche chaque lettre de la carte 
+                        Console.BackgroundColor = ConsoleColor.Black; // Mets en blanc tous les caractères dans la console qui ne font pas parti de la carte
+
+
+                        // 2 affichages différent, les 2 sont bien.
+                        Console.Write(""); // Pas de séparations
+                                           //Console.Write(":"); // Permet de séparer chaque caractère par :
+                    }
+
                 }
             }
 
@@ -357,6 +376,7 @@ namespace RhumDeGuybrush
                 if (Liste_parcelle[i].Count <= 0)
                 {
                     Liste_parcelle.RemoveAt(i);
+                    i--; // Vu que dès qu'on supprime un élément, la liste se "tasse", on doit reculer le compteur de 1 aussi.
                 }
             }
 
@@ -370,9 +390,34 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        void affichageListeParcelle()
+        public void affichageListeParcelle()
         {
-        
+
+            List<List<Land>> listeParcelles = ParcoursParcelle();
+
+            Console.WriteLine("\n{0} parcelles:", listeParcelles.Count());
+
+            foreach(List<Land> parcelle in listeParcelles)
+            {
+
+
+                Console.Write("Parcelle");
+                Console.ForegroundColor = parcelle[0].color;
+                Console.Write(" {0} ", parcelle[0].lettre);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.Write("- {0} en unités:\n",parcelle.Count());
+                foreach(Land terre in parcelle)
+                {
+                    Console.ForegroundColor = terre.color;
+                    Console.Write(" ({0},{1}) ", terre.x, terre.y);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine("\n");
+            }
+
+
+
         }
         #endregion
 
