@@ -25,7 +25,7 @@ namespace RhumDeGuybrush
         #region Constructeur
 
         /// <summary>
-        ///  ?????
+        /// Le constructeur de l'ILE, ne prend qu'un chemin vers une carte crypté. Pour afficher une carte décrypté, il faut la cryper avec l'encodeur puis la décrypter.
         /// </summary>
         /// <param name="path"> Le chemin vers la carte cryptée </param>
         public Ile(string path) 
@@ -63,10 +63,10 @@ namespace RhumDeGuybrush
 
         #region décodage
         /// <summary>
-        /// ?????
+        /// Fonction qui a pour but de prendre une carte encodé, et qui renvoi un tableau 10x10 d'objet "Land" qui contient toute les informations utiles pour manipuler/consulter la carte.
         /// </summary>
-        /// <param name="code"> ????? </param>
-        /// <returns></returns>
+        /// <param name="code"> Une chaine de caractères qui correspond a une carte encodé. </param>
+        /// <returns> Retourne un tableau 2D 10x10 contenant des "Land".</returns>
         Land[,] decodage(string code)
         {
 
@@ -74,8 +74,8 @@ namespace RhumDeGuybrush
             /// <summary>
             /// Fonction (récursive) qui va regarder si y'as des voisin de la case (même parcelle). Si oui, va regardez leur voisins aussi. (voir schéma dans "autre" sur github)
             /// </summary>
-            /// <param name="toCheck"> ????? </param>
-            /// <param name="toCode"> ????? </param>
+            /// <param name="toCheck"> La liste des cases a traiter --> vérifier leur voisins </param>
+            /// <param name="tabCode"> Le tableau encodé, pour pouvoir accéder au éléments. </param>
             /// <returns></returns>
             List<Land> checkNeighboor(List<Land> toCheck, Land[,] tabCode) 
             {
@@ -307,7 +307,7 @@ namespace RhumDeGuybrush
   
 
         /// <summary>
-        ///  ?????
+        ///  Fonction qui permet d'afficher la carte comme demandé (avec des couleurs) avec des caractères ASCII
         /// </summary>
         public void affichageAscii()
         {
@@ -333,9 +333,9 @@ namespace RhumDeGuybrush
         }
 
         /// <summary>
-        ///  ?????
+        /// Mon petit bijou, affiche la carte "visuellement" avec des couleurs, etc... c'est super beau 
         /// </summary>
-        /// <param name="mapSize"> ????? </param>
+        /// <param name="mapSize"> La taille d'affichage de la carte </param>
         public void affichageCarte(int mapSize) {
             Console.WriteLine("\n");
             for (int i = 0; i < 10; i++) // Parcours les lignes tableau
@@ -366,9 +366,9 @@ namespace RhumDeGuybrush
         #region parcours Parcelle
 
         /// <summary>
-        /// ?????
+        /// Récupère la liste de toute les parcelles. Utilisé dans quasi toute les autres fonction lié au parcelles.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retourne une liste qui contient des listes de cases "Land".</returns>
         List<List<Land>> ParcoursParcelle()
         {
             List<List<Land>> Liste_parcelle = new List<List<Land>>(); // Une liste qui contient des listes de cases
@@ -403,12 +403,12 @@ namespace RhumDeGuybrush
 
             return Liste_parcelle;
         }
-            #endregion
+        #endregion
 
-            #region AffichageListeParcelle
-            /// <summary>
-            /// ?????
-            /// </summary>
+        #region AffichageListeParcelle
+        /// <summary>
+        /// Fonction qui affiche la liste des parcelles
+        /// </summary>
         public void affichageListeParcelle()
             {
 
@@ -442,11 +442,11 @@ namespace RhumDeGuybrush
 
         #region AffichageTailleParcelle
      /// <summary>
-     /// ?????
+     /// Fonction qui affiche la taille d'une parcelle en particulier
      /// </summary>
-     /// <param name="toFind"> ????? </param>
-     /// <param name="mute"> ????? </param>
-     /// <returns></returns>
+     /// <param name="toFind"> La parcelle dont on veut connaitre la taille </param>
+     /// <param name="mute"> Permet de désactiver le retour écrit, utile pour les fonction qui se servent de celle ci mais ne veulent pas afficher le texte. </param>
+     /// <returns> Retourne la taille de la parcelle.</returns>
         public int affichageTailleParcelle(char toFind, Boolean mute) // mute permet de ne pas afficher de texte au besoin
         {
             List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
@@ -471,9 +471,9 @@ namespace RhumDeGuybrush
 
         #region affichagePlusGrandeParcelle
         /// <summary>
-        /// ?????
+        /// Affiche les parcelles plus grande qu'un certain montant
         /// </summary>
-        /// <param name="minSize"> ????? </param>
+        /// <param name="minSize"> La taille dont les parcelles doivent être supérieur </param>
         public void affichageParcelleSuperieurA(int minSize)
         {
             Boolean found = false;
@@ -501,7 +501,7 @@ namespace RhumDeGuybrush
 
         #region affichageTailleMoyenne
         /// <summary>
-        /// ?????
+        /// Affiche la taille moyenne de toute les parcelles
         /// </summary>
         public void affichageTailleMoyenne()
         {
