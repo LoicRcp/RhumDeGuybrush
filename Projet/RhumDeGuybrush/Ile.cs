@@ -331,25 +331,28 @@ namespace RhumDeGuybrush
         #region parcours Parcelle
         List<List<Land>> ParcoursParcelle()
         {
-            List<List<Land>> Liste_parcelle = new List<List<Land>>();
+            List<List<Land>> Liste_parcelle = new List<List<Land>>(); // Une liste qui contient des listes de cases
             for (int t = 0; t < 30; t++)
             {
-                Liste_parcelle.Add(new List<Land>());
+                Liste_parcelle.Add(new List<Land>()); // on créer 30 listes pour être sur d'en avoir assez pour toute les parcelles
             }
 
 
             for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 10; j++) // on va sur chaque case du tableau
                 {
-                    if (carte[i, j].lettre != 'M' && carte[i, j].lettre != 'F')
+                    if (carte[i, j].lettre != 'M' && carte[i, j].lettre != 'F') // si ce n'est pas un type mer/foret
                     {
-                        Liste_parcelle[carte[i, j].lettre - 'a'].Add(carte[i, j]);
+                        Liste_parcelle[carte[i, j].lettre - 'a'].Add(carte[i, j]); // on l'ajoute à sa liste attitré. Pour savoir, on utilise le code ASCII de la lettre de la case.
+                                                                                   // Par exemple, toute les cases marqué "a" vont aller dans la liste n°0 car a-a = 0 | 96 - 96 = 0
+                                                                                   // B-A = 1 car 97-96 = 1.
+
                     }
                 }
             }
 
-            for (int i = 0; i < Liste_parcelle.Count; i++)
+            for (int i = 0; i < Liste_parcelle.Count; i++) // on parcours les listes de parcelles et on supprimes celles qui sont vide.
             {
                 if (Liste_parcelle[i].Count <= 0)
                 {
