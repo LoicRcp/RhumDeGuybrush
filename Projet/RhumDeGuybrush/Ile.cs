@@ -382,32 +382,32 @@ namespace RhumDeGuybrush
 
             return Liste_parcelle;
         }
-        #endregion
+            #endregion
 
-        #region AffichageListeParcelle
-        /// <summary>
-        /// Fonction affichageListeParcelle ...
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
+            #region AffichageListeParcelle
+            /// <summary>
+            /// Fonction affichageListeParcelle ...
+            /// </summary>
+            /// <param name="c"></param>
+            /// <returns></returns>
         public void affichageListeParcelle()
-        {
-
-            List<List<Land>> listeParcelles = ParcoursParcelle();
-
-            Console.WriteLine("\n{0} parcelles:", listeParcelles.Count());
-
-            foreach(List<Land> parcelle in listeParcelles)
             {
 
+            List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
 
-                Console.Write("Parcelle");
+            Console.WriteLine("\n{0} parcelles:", listeParcelles.Count()); // on affiche le nombre de parcelles
+
+            foreach(List<Land> parcelle in listeParcelles) // On parcours la liste des parcelles
+            {
+
+                // On affiche le nom de la parcelle dans sa couleur ainsi que le nombre de cases dans la parcelle
+                Console.Write("Parcelle"); 
                 Console.ForegroundColor = parcelle[0].color;
                 Console.Write(" {0} ", parcelle[0].lettre);
                 Console.ForegroundColor = ConsoleColor.White;
-
                 Console.Write("- {0} en unités:\n",parcelle.Count());
-                foreach(Land terre in parcelle)
+                
+                foreach(Land terre in parcelle) // On prend chaque case et on affiche ses coordonnées dans sa couleur.
                 {
                     Console.ForegroundColor = terre.color;
                     Console.Write(" ({0},{1}) ", terre.x, terre.y);
