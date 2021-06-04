@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace RhumDeGuybrush
 {
@@ -22,6 +23,38 @@ namespace RhumDeGuybrush
         #endregion
 
         #region Constructeur
+
+        public Ile(string path)
+        {
+
+            if (path.Contains(".chiffre")){
+
+                string encoded = System.IO.File.ReadAllText(path);
+
+
+
+                string[] tempNomIle = path.Split('.');
+                tempNomIle = tempNomIle[0].Split('\\');
+                nomIle = tempNomIle[tempNomIle.Length-1];
+
+
+
+                carte = decodage(encoded);
+                
+                
+
+
+            }
+
+
+
+            
+
+
+
+        }
+        
+        
         #endregion
 
         #region Fonction
@@ -30,10 +63,11 @@ namespace RhumDeGuybrush
         /// Idée : On a un tableau avec le chaine crypté, un tableau vide de même dimension
         /// En entrée on met un bout de l'ile, la fonction va regarder en haut, en bas, a droite, a gauche. Si y'as pas de frontière entre les 2, elle va mettre dans le tableau vide, a ces coordonnées, le nom de la parcelle, puis la fonction recursive va recommencer.
         /// </summary>
-        /// <param name="a"></param>
+        /// <param name="code"></param>
         /// <returns></returns>
-        void Decodage(string a)
+        Land[,] decodage(string code)
         {
+
             List<Land> parcelle = new List<Land>();
             List<Land> checkNeighboor(List<Land> toCheck, Land[,] tabCode)
             {
@@ -121,15 +155,9 @@ namespace RhumDeGuybrush
                 return newList;
             }
 
-
-
-
-
-
             Land[,] tabCode = new Land[10, 10];
 
-
-            string code = "67:69:69:69:69:69:69:69:69:73|74:3:9:7:5:13:3:1:9:74|74:2:8:7:5:13:6:4:12:74|74:6:12:7:9:7:13:3:9:74|74:3:9:11:6:13:7:4:8:74|74:6:12:6:13:11:3:13:14:74|74:7:13:7:13:10:10:3:9:74|74:3:1:9:7:12:14:2:8:74|74:6:4:4:5:5:13:6:12:74|70:69:69:69:69:69:69:69:69:76|";
+            // string code = "67:69:69:69:69:69:69:69:69:73|74:3:9:7:5:13:3:1:9:74|74:2:8:7:5:13:6:4:12:74|74:6:12:7:9:7:13:3:9:74|74:3:9:11:6:13:7:4:8:74|74:6:12:6:13:11:3:13:14:74|74:7:13:7:13:10:10:3:9:74|74:3:1:9:7:12:14:2:8:74|74:6:4:4:5:5:13:6:12:74|70:69:69:69:69:69:69:69:69:76|";
 
             string[] codeSplitted = code.Split('|');
 
@@ -240,18 +268,7 @@ namespace RhumDeGuybrush
             }
 
 
-            for (i = 0; i < 10; i++)
-            {
-                Console.WriteLine();
 
-                for (j = 0; j < 10; j++)
-                {
-                    Console.ForegroundColor = decodedTab[i, j].color;
-                    Console.Write(decodedTab[i, j].lettre);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(":");
-                }
-            }
             // convertion string --> tableau 2D encodé - Fait
             // A faire: Fonction récursive, je parcours le tableau, je check pour les frontières, etc...
 
@@ -259,7 +276,7 @@ namespace RhumDeGuybrush
 
 
 
-            carte = decodedTab;
+            return decodedTab;
             
 
         }
@@ -269,30 +286,27 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param =></param>
         /// <returns></returns>
-        void affichageGlobal()
+       
+
+        
+        public void affichageGlobal()
         {
-            int i = 0;
-            int j = 0;
-            for (i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine();
-                for (j = 0; j < 3; j++)
-                {
 
-                    if (carte[i, j] == 'M')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                    }
-                    if (carte[i, j] == 'F')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                    }
-                    Console.Write(carte[i, j]);
+                for (int j = 0; j < 10; j++)
+                {
+                    Console.ForegroundColor = carte[i, j].color;
+                    Console.Write(carte[i, j].lettre);
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write(":");
                 }
             }
-        }
 
+            Console.WriteLine();
+        }
+       
         /// <summary>
         /// Fonction affichageListeParcelle ...
         /// </summary>
