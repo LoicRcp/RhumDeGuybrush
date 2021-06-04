@@ -9,6 +9,7 @@ namespace RhumDeGuybrush
     /// </summary>
     static class Codage
     {
+        #region FrontiereGauche
         /// <summary>
         /// Fonction FrontiereGauche regarde le chiffre à gauche et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière gauche</returns>
@@ -16,7 +17,7 @@ namespace RhumDeGuybrush
         /// <param name="carte">Tableau qui représente la carte</param>
         /// <param name="i">Curseur lignes</param>
         /// <param name="j">Curseur colonnes</param>
-        
+
         public static Boolean FrontiereGauche(char[,] carte, int i, int j)
         {
             try  // On essaye d'accéder à l'élément à gauche
@@ -37,6 +38,9 @@ namespace RhumDeGuybrush
             }
         }
 
+        #endregion 
+
+        #region FrontiereDroite
         /// <summary>
         /// Fonction FrontiereDroite regarde le chiffre à droite et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière droite</returns>
@@ -63,7 +67,8 @@ namespace RhumDeGuybrush
                 return true;
             }
         }
-
+        #endregion 
+        #region FrontiereHaut
         /// <summary>
         /// Fonction FrontiereHaut regarde le chiffre à droite et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière en haut</returns>
@@ -90,8 +95,8 @@ namespace RhumDeGuybrush
                 return true;
             }
         }
-
-
+        #endregion 
+        #region FrontiereBas
         /// <summary>
         /// Fonction FrontiereBas regarde le chiffre à droite et retourne faux si il est égal. Si non égal ou tentative d'accès à case d'accès du tableau inexistante retourne vrai  
         /// <returns>Booleen vrai si frontière en bas</returns>
@@ -119,13 +124,13 @@ namespace RhumDeGuybrush
                 return true;
             }
         }
+        #endregion
+        #region Codage
         /// <summary>
         /// Fonction Codage regarde les frontières et ajoute le numéro adapté en conséquences ainsi que le type de terre (Mer/Foret) pour chaque élément et construit a
         /// </summary>
         /// <returns> carte chiffré </returns>
         /// <param name="path">Chemin de la carte claire</param>
-        
-
         public static string codage(string path) // Méthode qui à partir d'une carte claire , retourne une carte chiffré
         {
             char[,] carte = new char[10, 10];  // Declare une carte 2 Dimensions de taille 10 ligne 10 colonnes
@@ -206,5 +211,6 @@ namespace RhumDeGuybrush
             return encode; // Retourne encode (Qui est la carte chiffré)
 
         }
+        #endregion
     }
 }
