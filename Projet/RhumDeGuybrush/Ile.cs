@@ -436,9 +436,23 @@ namespace RhumDeGuybrush
         /// <returns></returns>
         public void affichageTailleParcelle(char toFind)
         {
-  
-
+            List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
+            Boolean found = false;
+            foreach (List<Land> parcelle in listeParcelles) // On parcours la liste des parcelles
+            {
+                if (parcelle[0].lettre == toFind) // Si on trouve la lettre recherché dans une parcelle
+                {
+                    found = true;
+                    Console.WriteLine("\nTaille de la parcelle {0}: {1} unités.\n", toFind, parcelle.Count); // On affiche le texte approprié
+                    break;
+                }
             }
+            if (!found)
+            {
+                Console.WriteLine("\nLa parcelle {0} n'existe pas.\n", toFind); // Si on a rien trouvé, on dis que la parcelle n'existe pas.
+            }
+
+        }
         #endregion
 
         #region affichagePlusGrandeParcelle
