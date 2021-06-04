@@ -291,16 +291,16 @@ namespace RhumDeGuybrush
         
         public void affichageGlobal()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++) // Parcours les lignes tableau
             {
-                Console.WriteLine();
+                Console.WriteLine(); 
 
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 10; j++) // Parcours les colonnes tableau
                 {
-                    Console.ForegroundColor = carte[i, j].color;
-                    Console.Write(carte[i, j].lettre);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(":");
+                    Console.ForegroundColor = carte[i, j].color; 
+                    Console.Write(carte[i, j].lettre); // Affiche chaque lettre de la carte 
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Mets en blanc tous les caractères dans la console qui ne font pas parti de la carte
+                    Console.Write(":"); // Permet de séparer chaque caractère par :
                 }
             }
 
@@ -308,7 +308,7 @@ namespace RhumDeGuybrush
         }
        
 
-        public void ParcoursParcelle()
+         List<List<Land>> ParcoursParcelle()
         {
             List<List<Land>> Liste_parcelle = new List<List<Land>>();
             for (int t = 0; t < 30; t++)
@@ -335,6 +335,8 @@ namespace RhumDeGuybrush
                     Liste_parcelle.RemoveAt(i);
                 }
             }
+
+            return Liste_parcelle;
         }
 
 
