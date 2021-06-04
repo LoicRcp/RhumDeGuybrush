@@ -434,7 +434,7 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
-        public void affichageTailleParcelle(char toFind)
+        public int affichageTailleParcelle(char toFind, Boolean mute) // mute permet de ne pas afficher de texte au besoin
         {
             List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
             Boolean found = false;
@@ -443,15 +443,16 @@ namespace RhumDeGuybrush
                 if (parcelle[0].lettre == toFind) // Si on trouve la lettre recherché dans une parcelle
                 {
                     found = true;
-                    Console.WriteLine("\nTaille de la parcelle {0}: {1} unités.\n", toFind, parcelle.Count); // On affiche le texte approprié
-                    break;
+                    if (!mute) { Console.WriteLine("\nTaille de la parcelle {0}: {1} unités.\n", toFind, parcelle.Count); } // On affiche le texte approprié
+                    return parcelle.Count;
                 }
             }
             if (!found)
             {
-                Console.WriteLine("\nLa parcelle {0} n'existe pas.\n", toFind); // Si on a rien trouvé, on dis que la parcelle n'existe pas.
-            }
+                if (!mute) { Console.WriteLine("\nLa parcelle {0} n'existe pas.\n", toFind); } // Si on a rien trouvé, on dis que la parcelle n'existe pas.
 
+            }
+            return 0;
         }
         #endregion
 
@@ -461,11 +462,31 @@ namespace RhumDeGuybrush
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        void affichagePlusGrandeParcelle()
+        public void affichageParcelleSuperieurA(int minSize)
         {
+            Boolean found = false;
+            Console.WriteLine("Parcelle de taille supérieur à {0}", minSize);
+            List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
+
+            foreach (List<Land> parcelle in listeParcelles)
+            {
+                int taille = affichageTailleParcelle(parcelle[0].lettre, true);
+                if (taille > minSize)
+                {
+                    found = true;
+                    Console.WriteLine("Parcelle {0}: {1} unités.", parcelle[0].lettre, taille);
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("Aucune parcelle n'as été trouvé.");
+            }
+
+
         }
         #endregion
-     
+
         #region affichageTailleMoyenne
         /// <summary>
         /// Fonction affichageTailleMoyenne qui fait un peu pareil qu'au dessus, mais qui fait la moyenne au lieu de faire un tri sur la taille
