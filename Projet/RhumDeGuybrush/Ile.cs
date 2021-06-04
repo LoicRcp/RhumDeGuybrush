@@ -30,32 +30,20 @@ namespace RhumDeGuybrush
         /// <param name="path"> Le chemin vers la carte cryptée </param>
         public Ile(string path) 
         {
-
-            if (path.Contains(".chiffre")){ // Si l'extension est bien .chiffre:
-
-                string encoded = System.IO.File.ReadAllText(path); // on récupère le contenu, cad la carte cryptée
-
-
-
-                string[] tempNomIle = path.Split('.'); // Pour récupérer le nom de la carte (ça devrait servir si on fait un affichage interactif)
-                tempNomIle = tempNomIle[0].Split('\\');
-                nomIle = tempNomIle[tempNomIle.Length-1];
-
-
-
-                carte = decodage(encoded); // On décode la carte avec la méga-fonction "décodage"
-                
-                
-
-
+            string encoded = "";
+            if (path.Contains(".clair")) // si on fournis une carte en clair, l'encrypte et la décrypte (Pas efficace mais c'est le mieux,
+                                         // on est un peu bloqué a cause de la classe Land, il faudrait remplir un tableau 10x10 de "Land"
+                                         // alors qu'on peut juste a faire ça
+            {
+                encoded = Codage.codage(path);
+            } else {
+                encoded = System.IO.File.ReadAllText(path); // on récupère le contenu, cad la carte cryptée
             }
 
-
-
-            
-
-
-
+            string[] tempNomIle = path.Split('.'); // Pour récupérer le nom de la carte (ça devrait servir si on fait un affichage interactif)
+                tempNomIle = tempNomIle[0].Split('\\');
+                nomIle = tempNomIle[tempNomIle.Length-1];
+                carte = decodage(encoded); // On décode la carte avec la méga-fonction "décodage"
         }
 
 
@@ -303,7 +291,7 @@ namespace RhumDeGuybrush
         }
         #endregion
 
-        #region Affichage Global
+        #region AffichageAscii
   
 
         /// <summary>
@@ -330,7 +318,11 @@ namespace RhumDeGuybrush
                                        //Console.Write(":"); // Permet de séparer chaque caractère par :
                 }
             }
+            Console.WriteLine("\n");
         }
+
+        #endregion
+        #region AffichageCarte
 
         /// <summary>
         /// Mon petit bijou, affiche la carte "visuellement" avec des couleurs, etc... c'est super beau 
@@ -414,7 +406,8 @@ namespace RhumDeGuybrush
 
             List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
 
-            Console.WriteLine("\n{0} parcelles:", listeParcelles.Count()); // on affiche le nombre de parcelles
+            Console.WriteLine("----------------------------------------------------------------------" +
+                "\n{0} parcelles:", listeParcelles.Count()); // on affiche le nombre de parcelles
 
             foreach(List<Land> parcelle in listeParcelles) // On parcours la liste des parcelles
             {
@@ -424,7 +417,7 @@ namespace RhumDeGuybrush
                 Console.ForegroundColor = parcelle[0].color;
                 Console.Write(" {0} ", parcelle[0].lettre);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("- {0} en unités:\n",parcelle.Count());
+                Console.Write("- {0} unités:\n",parcelle.Count());
                 
                 foreach(Land terre in parcelle) // On prend chaque case et on affiche ses coordonnées dans sa couleur.
                 {
@@ -456,7 +449,8 @@ namespace RhumDeGuybrush
                 if (parcelle[0].lettre == toFind) // Si on trouve la lettre recherché dans une parcelle
                 {
                     found = true;
-                    if (!mute) { Console.WriteLine("\nTaille de la parcelle {0}: {1} unités.\n", toFind, parcelle.Count); } // On affiche le texte approprié
+                    if (!mute) { Console.WriteLine("----------------------------------------------------------------------" +
+                        "\nTaille de la parcelle {0}: {1} unités.\n", toFind, parcelle.Count); } // On affiche le texte approprié
                     return parcelle.Count;
                 }
             }
@@ -477,7 +471,8 @@ namespace RhumDeGuybrush
         public void affichageParcelleSuperieurA(int minSize)
         {
             Boolean found = false;
-            Console.WriteLine("Parcelle de taille supérieur à {0}", minSize);
+            Console.WriteLine("----------------------------------------------------------------------" +
+                "\nParcelle de taille supérieur à {0}", minSize);
             List<List<Land>> listeParcelles = ParcoursParcelle(); // on récupère la liste des parcelles
 
             foreach (List<Land> parcelle in listeParcelles)
@@ -522,7 +517,8 @@ namespace RhumDeGuybrush
 
             moyenne = moyenne / listeParcelles.Count();
 
-            Console.WriteLine("La taille moyenne est: {0}", Math.Round(moyenne, 2));
+            Console.WriteLine("----------------------------------------------------------------------" +
+                "\nLa taille moyenne est: {0}", Math.Round(moyenne, 2));
         }
         #endregion
 

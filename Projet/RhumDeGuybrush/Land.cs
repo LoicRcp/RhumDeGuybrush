@@ -4,7 +4,9 @@ using System.Text;
 
 namespace RhumDeGuybrush
 {
-    
+    /// <summary>
+    /// Classe qui stocke les informations importantes concernant une case. Sa position, sa couleur, son numéro, sa lettre, ses propriétés de voisinage, son type, etc...
+    /// </summary>
      class Land
     {
         #region Attribut
