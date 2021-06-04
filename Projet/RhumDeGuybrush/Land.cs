@@ -4,9 +4,11 @@ using System.Text;
 
 namespace RhumDeGuybrush
 {
+    
      class Land
     {
-         public string nb; // Le nombre si land = encodé
+        #region Attribut
+        public string nb; // Le nombre si land = encodé
         public char lettre; // la lettre si land = décodé
 
         public System.ConsoleColor color;
@@ -24,7 +26,9 @@ namespace RhumDeGuybrush
         public Boolean foret = false; 
 
         public Boolean done = false; // Pour savoir si cette case a déjà été traité
+        #endregion
 
+        #region Constructeur
         public Land(string _nb, int _y, int _x) // Constructeur pour un bout de terre encodé (on donne que le nombre)
         {
 
@@ -73,9 +77,9 @@ namespace RhumDeGuybrush
             // Console.WriteLine("haut: {0}\nbas: {1}\ngauche: {2}\ndroite: {3}\nmer: {4}\nforet:{5}\n", frontiereHaut, frontiereBas, frontiereGauche, frontiereDroit, mer, foret);
 
         }
+        
 
 
-    
         // Ne sera pas utilisé finalement
         Land(char lettre, Boolean frontHaut, Boolean frontBas, Boolean frontGauche, Boolean frontDroite, Boolean mer, Boolean foret) // Constructeur pour un bout de terre décodé, on donne son nom de parcelle et ses propriétés
         {
@@ -83,12 +87,14 @@ namespace RhumDeGuybrush
 
 
         }
+        #endregion
 
-
+        #region Acesseur
         // un acesseur, mais au final c'était trop long et embêtant donc j'ai mis les propriétés qui ont besoin d'être accédé en public, même si c'est pas très bien
         public string Nb
         {
             get { return nb; }
         }
+        #endregion
     }
 }
