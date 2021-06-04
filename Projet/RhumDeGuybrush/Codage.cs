@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RhumDeGuybrush
 {
-    // <summary>
+    /// <summary>
     /// La classe Codage permet d'encoder une carte en claire 
     /// >/summary>
     static class Codage
