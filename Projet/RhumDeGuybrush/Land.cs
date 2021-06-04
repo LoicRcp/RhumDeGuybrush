@@ -10,24 +10,24 @@ namespace RhumDeGuybrush
      class Land
     {
         #region Attribut
-        public string nb; // Le nombre si land = encodé
-        public char lettre; // la lettre si land = décodé
+         string nb; // Le nombre si land = encodé
+         char lettre; // la lettre si land = décodé
 
-        public System.ConsoleColor color;
+         System.ConsoleColor color;
 
-        public int x; // Coordonnées x (dans le tableau) de l'élément
-        public int y; // ........... y ..............................
+         int x; // Coordonnées x (dans le tableau) de l'élément
+         int y; // ........... y ..............................
 
 
         // Booleans pour savoir l'état de la case
-        public Boolean frontiereHaut = false;
-        public Boolean frontiereBas = false;
-        public Boolean frontiereGauche = false;
-        public Boolean frontiereDroit = false;
-        public Boolean mer = false;
-        public Boolean foret = false; 
+         Boolean frontiereHaut = false;
+         Boolean frontiereBas = false;
+         Boolean frontiereGauche = false;
+         Boolean frontiereDroit = false;
+         Boolean mer = false;
+         Boolean foret = false; 
 
-        public Boolean done = false; // Pour savoir si cette case a déjà été traité
+         Boolean done = false; // Pour savoir si cette case a déjà été traité
         #endregion
 
         #region Constructeur
@@ -92,11 +92,62 @@ namespace RhumDeGuybrush
         #endregion
 
         #region Acesseur
-        // un acesseur, mais au final c'était trop long et embêtant donc j'ai mis les propriétés qui ont besoin d'être accédé en public, même si c'est pas très bien
         public string Nb
         {
             get { return nb; }
         }
+        public char Lettre
+        {
+            get { return lettre; }
+            set { lettre = value; }
+        }
+        public System.ConsoleColor Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+        public int X
+        {
+            get { return x; }
+        }
+        public int Y
+        {
+            get { return y; }
+        }
+        public Boolean FrontiereHaut
+        {
+            get { return frontiereHaut; }
+        }
+        public Boolean FrontiereBas
+        {
+            get { return frontiereBas; }
+        }
+        public Boolean FrontiereGauche
+        {
+            get { return frontiereGauche; }
+        }
+        public Boolean FrontiereDroit
+        {
+            get { return frontiereDroit; }
+        }
+        public Boolean Mer
+        {
+            get { return mer; }
+        }
+        public Boolean Foret
+        {
+            get { return foret; }
+        }
+        public Boolean Done
+        {
+            get { return done; }
+            set { done = value; }
+        }
+
+
+
+
+
         #endregion
     }
 }

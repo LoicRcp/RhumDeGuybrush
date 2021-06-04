@@ -73,18 +73,18 @@ namespace RhumDeGuybrush
 
                 foreach (Land land in parcelle) // Pour chaque élément "land" dans parcelle,
                 {
-                    if (land.done != true) // si l'élement land n'as pas déjà été traité, on fait:
+                    if (land.Done != true) // si l'élement land n'as pas déjà été traité, on fait:
                     {
-                        try { newList.Add(tabCode[land.y + 1, land.x]); } // Si y'as un élément en bas, l'ajoute dans la liste "newList"
+                        try { newList.Add(tabCode[land.Y + 1, land.X]); } // Si y'as un élément en bas, l'ajoute dans la liste "newList"
                         catch (Exception e) { }
 
-                        try { newList.Add(tabCode[land.y - 1, land.x]); } // Si y'as un élément en haut, l'ajoute dans la liste "newList"
+                        try { newList.Add(tabCode[land.Y - 1, land.X]); } // Si y'as un élément en haut, l'ajoute dans la liste "newList"
                         catch (Exception e) { }
 
-                        try { newList.Add(tabCode[land.y, land.x + 1]); } // Si y'as un élément a droite, l'ajoute dans la liste "newList"
+                        try { newList.Add(tabCode[land.Y, land.X + 1]); } // Si y'as un élément a droite, l'ajoute dans la liste "newList"
                         catch (Exception e) { }
 
-                        try { newList.Add(tabCode[land.y, land.x - 1]); } // Si y'as un élément a gauche, l'ajoute dans la liste "newList"
+                        try { newList.Add(tabCode[land.Y, land.X - 1]); } // Si y'as un élément a gauche, l'ajoute dans la liste "newList"
                         catch (Exception e) { }
 
 
@@ -92,27 +92,27 @@ namespace RhumDeGuybrush
 
 
 
-                        if (tabCode[land.y, land.x].frontiereGauche || tabCode[land.y, land.x - 1].done) // Si l'élément a gauche n'est pas de la même parcelle (frontière entre les 2) OU si il a déjà été traité,
+                        if (tabCode[land.Y, land.X].FrontiereGauche || tabCode[land.Y, land.X - 1].Done) // Si l'élément a gauche n'est pas de la même parcelle (frontière entre les 2) OU si il a déjà été traité,
                         {
-                            try { newList.Remove(tabCode[land.y, land.x - 1]); } // On le supprime de la liste. Si il y a une erreur, c'est qu'il n'y a rien à gauche.
+                            try { newList.Remove(tabCode[land.Y, land.X - 1]); } // On le supprime de la liste. Si il y a une erreur, c'est qu'il n'y a rien à gauche.
                             catch (Exception e) { }
 
                         }
-                        if (tabCode[land.y, land.x].frontiereDroit || tabCode[land.y, land.x + 1].done) // Même système
+                        if (tabCode[land.Y, land.X].FrontiereDroit || tabCode[land.Y, land.X + 1].Done) // Même système
                         {
-                            try { newList.Remove(tabCode[land.y, land.x + 1]); }
+                            try { newList.Remove(tabCode[land.Y, land.X + 1]); }
                             catch (Exception e) { }
 
                         }
-                        if (tabCode[land.y, land.x].frontiereBas || tabCode[land.y + 1, land.x].done) //...
+                        if (tabCode[land.Y, land.X].FrontiereBas || tabCode[land.Y + 1, land.X].Done) //...
                         {
-                            try { newList.Remove(tabCode[land.y + 1, land.x]); }
+                            try { newList.Remove(tabCode[land.Y + 1, land.X]); }
                             catch (Exception e) { }
 
                         }
-                        if (tabCode[land.y, land.x].frontiereHaut || tabCode[land.y - 1, land.x].done) //...
+                        if (tabCode[land.Y, land.X].FrontiereHaut || tabCode[land.Y - 1, land.X].Done) //...
                         {
-                            try { newList.Remove(tabCode[land.y - 1, land.x]); }
+                            try { newList.Remove(tabCode[land.Y - 1, land.X]); }
                             catch (Exception e) { }
 
                         }
@@ -121,7 +121,7 @@ namespace RhumDeGuybrush
 
 
 
-                        land.done = true; // Une fois fini, on indique la case sur laquelle on est comme "traité". Elle ne sera donc plus traité, et on a pas de redondances ou de doublons.
+                        land.Done = true; // Une fois fini, on indique la case sur laquelle on est comme "traité". Elle ne sera donc plus traité, et on a pas de redondances ou de doublons.
 
 
 
@@ -250,7 +250,7 @@ namespace RhumDeGuybrush
                         //RandomColor = colors[new Random().Next(colors.Length)];
                         RandomColor = colors[colorCounter];
                         
-                        if (!parcelle[0].foret && !parcelle[0].mer) // Si la parcelle n'est pas foret/mer, alors la lettre augmente de 1. a --> b.  b --> c. etc...
+                        if (!parcelle[0].Foret && !parcelle[0].Mer) // Si la parcelle n'est pas foret/mer, alors la lettre augmente de 1. a --> b.  b --> c. etc...
                         {
                             charCounter++;
                         }
@@ -258,26 +258,26 @@ namespace RhumDeGuybrush
 
                         foreach (Land land in parcelle) // Pour chaque case dans la parcelle
                         {
-                            land.color = RandomColor; // La couleur est celle choisi aléatoirement/dans l'ordre. La couleur change a chaque case, mais vu que les cases déjà traité ne sont pas retraité,
+                            land.Color = RandomColor; // La couleur est celle choisi aléatoirement/dans l'ordre. La couleur change a chaque case, mais vu que les cases déjà traité ne sont pas retraité,
                                                       // elles ne sont pas changé, donc on peut définir la couleur de TOUTE la parcelle sans soucis.
 
-                            if (land.mer) // Si c'est la mer
+                            if (land.Mer) // Si c'est la mer
                             {
-                                land.lettre = 'M'; // la lettre est 'M'
-                                land.color = ConsoleColor.Blue; // la couleur est remplacé par Bleu
+                                land.Lettre = 'M'; // la lettre est 'M'
+                                land.Color = ConsoleColor.Blue; // la couleur est remplacé par Bleu
                             }
-                            else if (land.foret) // similaire pour la foret
+                            else if (land.Foret) // similaire pour la foret
                             {
-                                land.lettre = 'F';
-                                land.color = ConsoleColor.Green;
+                                land.Lettre = 'F';
+                                land.Color = ConsoleColor.Green;
                             }
                             else
                             {
-                                land.lettre = (char)charCounter; // Sinon, on met simplement la lettre défini plus haut.
+                                land.Lettre = (char)charCounter; // Sinon, on met simplement la lettre défini plus haut.
                             }
 
 
-                            decodedTab[land.y, land.x] = land; // On ajoute les cases de la parcelle dans le tableau 2D de la carte décodé.
+                            decodedTab[land.Y, land.X] = land; // On ajoute les cases de la parcelle dans le tableau 2D de la carte décodé.
                                                                // (Chaque case stocke ses coordonnées)
 
                         }
@@ -308,8 +308,8 @@ namespace RhumDeGuybrush
 
                 for (int j = 0; j < 10; j++) // Parcours les colonnes tableau
                 {
-                    Console.ForegroundColor = carte[i, j].color;
-                    Console.Write(carte[i, j].lettre); // Affiche chaque lettre de la carte 
+                    Console.ForegroundColor = carte[i, j].Color;
+                    Console.Write(carte[i, j].Lettre); // Affiche chaque lettre de la carte 
                     Console.ForegroundColor = ConsoleColor.White; // Mets en blanc tous les caractères dans la console qui ne font pas parti de la carte
 
 
@@ -337,7 +337,7 @@ namespace RhumDeGuybrush
                 {
                     for (int j = 0; j < 10; j++) // Parcours les colonnes tableau
                     {
-                        Console.BackgroundColor = carte[i, j].color; // Change la couleur pour être la même que celle de la case sur laquelle on est.
+                        Console.BackgroundColor = carte[i, j].Color; // Change la couleur pour être la même que celle de la case sur laquelle on est.
                         for (int k = 0; k < mapSize * 2; k++) { Console.Write(" "); } // Affiche rien, mais permet de "colorier" le fond.
                         Console.BackgroundColor = ConsoleColor.Black; // Remet en noir le fond.
 
@@ -374,9 +374,9 @@ namespace RhumDeGuybrush
             {
                 for (int j = 0; j < 10; j++) // on va sur chaque case du tableau
                 {
-                    if (carte[i, j].lettre != 'M' && carte[i, j].lettre != 'F') // si ce n'est pas un type mer/foret
+                    if (carte[i, j].Lettre != 'M' && carte[i, j].Lettre != 'F') // si ce n'est pas un type mer/foret
                     {
-                        Liste_parcelle[carte[i, j].lettre - 'a'].Add(carte[i, j]); // on l'ajoute à sa liste attitré. Pour savoir, on utilise le code ASCII de la lettre de la case.
+                        Liste_parcelle[carte[i, j].Lettre - 'a'].Add(carte[i, j]); // on l'ajoute à sa liste attitré. Pour savoir, on utilise le code ASCII de la lettre de la case.
                                                                                    // Par exemple, toute les cases marqué "a" vont aller dans la liste n°0 car a-a = 0 | 96 - 96 = 0
                                                                                    // B-A = 1 car 97-96 = 1.
 
@@ -414,15 +414,15 @@ namespace RhumDeGuybrush
 
                 // On affiche le nom de la parcelle dans sa couleur ainsi que le nombre de cases dans la parcelle
                 Console.Write("Parcelle"); 
-                Console.ForegroundColor = parcelle[0].color;
-                Console.Write(" {0} ", parcelle[0].lettre);
+                Console.ForegroundColor = parcelle[0].Color;
+                Console.Write(" {0} ", parcelle[0].Lettre);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("- {0} unités:\n",parcelle.Count());
                 
                 foreach(Land terre in parcelle) // On prend chaque case et on affiche ses coordonnées dans sa couleur.
                 {
-                    Console.ForegroundColor = terre.color;
-                    Console.Write(" ({0},{1}) ", terre.x, terre.y);
+                    Console.ForegroundColor = terre.Color;
+                    Console.Write(" ({0},{1}) ", terre.X, terre.Y);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine("\n");
@@ -446,7 +446,7 @@ namespace RhumDeGuybrush
             Boolean found = false;
             foreach (List<Land> parcelle in listeParcelles) // On parcours la liste des parcelles
             {
-                if (parcelle[0].lettre == toFind) // Si on trouve la lettre recherché dans une parcelle
+                if (parcelle[0].Lettre == toFind) // Si on trouve la lettre recherché dans une parcelle
                 {
                     found = true;
                     if (!mute) { Console.WriteLine("----------------------------------------------------------------------" +
@@ -477,11 +477,11 @@ namespace RhumDeGuybrush
 
             foreach (List<Land> parcelle in listeParcelles)
             {
-                int taille = affichageTailleParcelle(parcelle[0].lettre, true);
+                int taille = affichageTailleParcelle(parcelle[0].Lettre, true);
                 if (taille > minSize)
                 {
                     found = true;
-                    Console.WriteLine("Parcelle {0}: {1} unités.", parcelle[0].lettre, taille);
+                    Console.WriteLine("Parcelle {0}: {1} unités.", parcelle[0].Lettre, taille);
                 }
             }
 
@@ -508,7 +508,7 @@ namespace RhumDeGuybrush
 
             foreach (List<Land> parcelle in listeParcelles)
             {
-                moyenne += affichageTailleParcelle(parcelle[0].lettre, true);
+                moyenne += affichageTailleParcelle(parcelle[0].Lettre, true);
 
 
 
