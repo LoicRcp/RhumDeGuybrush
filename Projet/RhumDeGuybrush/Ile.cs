@@ -307,6 +307,37 @@ namespace RhumDeGuybrush
             Console.WriteLine();
         }
        
+
+        public void ParcoursParcelle()
+        {
+            List<List<Land>> Liste_parcelle = new List<List<Land>>();
+            for (int t = 0; t < 30; t++)
+            {
+                Liste_parcelle.Add(new List<Land>());
+            }
+
+
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (carte[i, j].lettre != 'M' && carte[i, j].lettre != 'F')
+                    {
+                        Liste_parcelle[carte[i, j].lettre - 'a'].Add(carte[i, j]);
+                    }
+                }
+            }
+
+            for (int i = 0; i < Liste_parcelle.Count; i++)
+            {
+                if (Liste_parcelle[i].Count <= 0)
+                {
+                    Liste_parcelle.RemoveAt(i);
+                }
+            }
+        }
+
+
         /// <summary>
         /// Fonction affichageListeParcelle ...
         /// </summary>
@@ -314,6 +345,7 @@ namespace RhumDeGuybrush
         /// <returns></returns>
         void affichageListeParcelle()
         {
+        
         }
 
         /// <summary>
