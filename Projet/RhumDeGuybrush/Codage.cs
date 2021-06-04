@@ -4,8 +4,9 @@ using System.Text;
 
 namespace RhumDeGuybrush
 {
-
-  
+    // <summary>
+    /// La classe Codage permet d'encoder une carte en claire 
+    /// >/summary>
     static class Codage
     {
         /// <summary>
@@ -15,6 +16,7 @@ namespace RhumDeGuybrush
         /// <param name="carte">Tableau qui représente la carte></param>
         /// <param name="i">Curseur lignes></param>
         ///  <param name="j">Curseur colonnes></param>
+        
         public static Boolean FrontiereGauche(char[,] carte, int i, int j)
         {
             try  // On essaye d'accéder à l'élément à gauche
@@ -120,7 +122,10 @@ namespace RhumDeGuybrush
         /// <summary>
         /// Fonction Codage regarde les frontières et ajoute le numéro adapté en conséquences ainsi que le type de terre (Mer/Foret) pour chaque élément et construit a
         /// </summary>
-       
+        /// <returns> carte chiffré </returns>
+        /// <param name="path">Chemin de la carte claire></param>
+        
+
         public static string codage(string path) // Méthode qui à partir d'une carte claire , retourne une carte chiffré
         {
             char[,] carte = new char[10, 10];  // Declare une carte 2 Dimensions de taille 10 ligne 10 colonnes
